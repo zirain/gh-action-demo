@@ -1,0 +1,19 @@
+name: Build and Test
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: demo
+          clean: true
+
+      - name: test action
+        uses: ./demo
