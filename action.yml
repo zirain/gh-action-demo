@@ -3,9 +3,9 @@ name: "Demo Action"
 description: "A GitHub demo Action"
 inputs:
   version:
-    description: "Relase version"
+    description: "Release version"
     required: false
-    default: "latest"
+    default: "v0.0.1"
 runs:
   using: "composite"
   steps:
