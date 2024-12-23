@@ -1,0 +1,23 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: "Demo Action"
+description: "A GitHub demo Action"
+inputs:
+  version:
+    description: "Release version"
+    required: false
+    default: "v0.0.1"
+runs:
+  using: "composite"
+  steps:
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - name: Get release
+      id: get-release
+      env:
+        RELEASE_VERSION: ${{ inputs.version }}
+      run: get-release.sh
+      shell: bash
